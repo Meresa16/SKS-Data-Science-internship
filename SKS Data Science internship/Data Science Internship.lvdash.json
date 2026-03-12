@@ -2,7 +2,7 @@
   "datasets": [
     {
       "name": "4246bbdc",
-      "displayName": "telco_customer_churn_dataset_3_",
+      "displayName": "Telco Customer Charges and Churn Data Analysis",
       "queryLines": [
         "SELECT try_cast(A.total_charges as double )as total_charges_from_double, A.* FROM fmcg.google_drive.telco_customer_churn_dataset_3_ A"
       ]
@@ -47,7 +47,7 @@
             }
           },
           "position": {
-            "x": 2,
+            "x": 4,
             "y": 3,
             "width": 2,
             "height": 2
@@ -58,19 +58,20 @@
             "name": "bf4acf51",
             "multilineTextboxSpec": {
               "lines": [
-                "## <span style=\"text-align:center;display:block\"><span style=\"font-size: 48px;line-height: 1.5;color: #11171C;\">**Customer Churn Analysis&#32;**</span></span>"
+                "# <span style=\"text-align:center;display:block\"><span style=\"font-size: 48px;line-height: 1.5;color: #11171C;\">**Customer Churn Analysis&#32;**</span></span>"
               ]
             },
             "specExtensions": {
               "widgetBackgroundColor": {
-                "dark": "#D1DEE9"
+                "light": "#CE9393UNDEFINED",
+                "dark": "#B61313UNDEFINED"
               }
             }
           },
           "position": {
             "x": 0,
             "y": 0,
-            "width": 6,
+            "width": 12,
             "height": 2
           }
         },
@@ -136,7 +137,7 @@
           "position": {
             "x": 0,
             "y": 5,
-            "width": 3,
+            "width": 6,
             "height": 5
           }
         },
@@ -218,9 +219,9 @@
             }
           },
           "position": {
-            "x": 3,
+            "x": 6,
             "y": 5,
-            "width": 3,
+            "width": 6,
             "height": 5
           }
         },
@@ -260,7 +261,7 @@
           "position": {
             "x": 0,
             "y": 3,
-            "width": 2,
+            "width": 4,
             "height": 2
           }
         },
@@ -311,7 +312,7 @@
           "position": {
             "x": 0,
             "y": 2,
-            "width": 2,
+            "width": 4,
             "height": 1
           }
         },
@@ -360,9 +361,9 @@
             }
           },
           "position": {
-            "x": 2,
+            "x": 4,
             "y": 2,
-            "width": 2,
+            "width": 4,
             "height": 1
           }
         },
@@ -1049,7 +1050,7 @@
           "position": {
             "x": 0,
             "y": 37,
-            "width": 6,
+            "width": 12,
             "height": 7
           }
         },
@@ -1093,9 +1094,9 @@
             }
           },
           "position": {
-            "x": 4,
+            "x": 8,
             "y": 2,
-            "width": 2,
+            "width": 4,
             "height": 1
           }
         },
@@ -1132,7 +1133,7 @@
             }
           },
           "position": {
-            "x": 4,
+            "x": 8,
             "y": 3,
             "width": 2,
             "height": 2
@@ -1225,7 +1226,7 @@
           "position": {
             "x": 0,
             "y": 10,
-            "width": 3,
+            "width": 6,
             "height": 6
           }
         },
@@ -1317,9 +1318,9 @@
             }
           },
           "position": {
-            "x": 3,
+            "x": 6,
             "y": 10,
-            "width": 3,
+            "width": 6,
             "height": 6
           }
         },
@@ -1397,7 +1398,7 @@
           "position": {
             "x": 0,
             "y": 16,
-            "width": 6,
+            "width": 12,
             "height": 9
           }
         },
@@ -1466,7 +1467,7 @@
           "position": {
             "x": 0,
             "y": 31,
-            "width": 6,
+            "width": 12,
             "height": 6
           }
         },
@@ -1543,12 +1544,91 @@
           "position": {
             "x": 0,
             "y": 25,
-            "width": 6,
+            "width": 12,
             "height": 6
+          }
+        },
+        {
+          "widget": {
+            "name": "eff8e24d",
+            "queries": [
+              {
+                "name": "main_query",
+                "query": {
+                  "datasetName": "4246bbdc",
+                  "fields": [
+                    {
+                      "name": "countdistinct(customer_id)",
+                      "expression": "COUNT(DISTINCT `customer_id`)"
+                    }
+                  ],
+                  "disaggregated": false
+                }
+              }
+            ],
+            "spec": {
+              "version": 2,
+              "widgetType": "counter",
+              "encodings": {
+                "value": {
+                  "fieldName": "countdistinct(customer_id)"
+                }
+              },
+              "frame": {
+                "title": "Unique customers",
+                "showTitle": true
+              }
+            }
+          },
+          "position": {
+            "x": 6,
+            "y": 3,
+            "width": 2,
+            "height": 2
+          }
+        },
+        {
+          "widget": {
+            "name": "277d6b38",
+            "queries": [
+              {
+                "name": "main_query",
+                "query": {
+                  "datasetName": "4246bbdc",
+                  "fields": [
+                    {
+                      "name": "avg(total_charges_from_double)",
+                      "expression": "AVG(`total_charges_from_double`)"
+                    }
+                  ],
+                  "disaggregated": false
+                }
+              }
+            ],
+            "spec": {
+              "version": 2,
+              "widgetType": "counter",
+              "encodings": {
+                "value": {
+                  "fieldName": "avg(total_charges_from_double)"
+                }
+              },
+              "frame": {
+                "title": "Average Total Charges",
+                "showTitle": true
+              }
+            }
+          },
+          "position": {
+            "x": 10,
+            "y": 3,
+            "width": 2,
+            "height": 2
           }
         }
       ],
-      "pageType": "PAGE_TYPE_CANVAS"
+      "pageType": "PAGE_TYPE_CANVAS",
+      "layoutVersion": "GRID_V1"
     }
   ],
   "uiSettings": {
